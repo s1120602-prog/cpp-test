@@ -1,13 +1,24 @@
 #include <iostream>
-using namespace std;
+
+double calculateBMI(double weight_kg, double height_cm) {
+    if (height_cm <= 0) return 0.0;
+
+    double height_m = height_cm / 100.0; // Convert height from cm to meters
+    double bmi = weight_kg / (height_m * height_m); // BMI calculation
+    return bmi;
+}
 
 int main() {
-    int sum = 0;
-    
-    for (int i = 1; i <= 50; i++) {
-        if (i % 7 == 0) {
-            sum += i;  // Add i to sum if it's divisible by 7
-        }
-    }
+    double weight1, weight2, height1, height2;
 
-    cout << "Sum of multiples of 7 betwe
+    weight1 = 80;
+    weight2 = 70;
+    height1 = 168;
+    height2 = 188;
+
+    std::cout << "your bmi is " << calculateBMI(weight1, height1) << std::endl;
+    std::cout << "another bmi is " << calculateBMI(weight2, height2) << std::endl;
+
+    return 0;
+}
+

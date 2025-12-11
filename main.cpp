@@ -1,24 +1,39 @@
 #include <iostream>
-
-double calculateBMI(double weight_kg, double height_cm) {
-    if (height_cm <= 0) return 0.0;
-
-    double height_m = height_cm / 100.0; // Convert height from cm to meters
-    double bmi = weight_kg / (height_m * height_m); // BMI calculation
-    return bmi;
-}
+#include <cstdlib>
+#include <ctime>
+using namespace std;
 
 int main() {
-    double weight1, weight2, height1, height2;
+    int N = 5;
+    int arr[N];
 
-    weight1 = 80;
-    weight2 = 70;
-    height1 = 168;
-    height2 = 188;
+    srand(time(NULL));
 
-    std::cout << "your bmi is " << calculateBMI(weight1, height1) << std::endl;
-    std::cout << "another bmi is " << calculateBMI(weight2, height2) << std::endl;
+    cout << "random number: ";
+    for (int i = 0; i < N; i++) {
+        arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < N - 1; i++) {
+        for (int j = 0; j < N - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "排序後: ";
+    for (int i = 0; i < N; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
+
+
 
